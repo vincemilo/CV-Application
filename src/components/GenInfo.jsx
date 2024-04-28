@@ -1,22 +1,30 @@
 import { useState } from "react";
 
-function GenInfo() {
-  const [value, setValue] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  });
+export default function GenInfo({ viewMode }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  if (viewMode)
+    return (
+      <>
+        <h2>General Info</h2>
+        <div>First Name: {firstName}</div>
+        <div>Last Name: {lastName}</div>
+        <div>Email: {email}</div>
+        <div>Phone: {phone}</div>
+      </>
+    );
   return (
     <>
-      <h1>General Info</h1>
+      <h2>General Info</h2>
       <div>
         <label>
           First Name:{" "}
           <input
             type="text"
-            value={value.firstName}
-            onChange={(e) => setValue(e.target.value)}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
         </label>
       </div>
@@ -25,8 +33,8 @@ function GenInfo() {
           Last Name:{" "}
           <input
             type="text"
-            value={value.lastName}
-            onChange={(e) => setValue(e.target.value)}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </label>
       </div>
@@ -35,8 +43,8 @@ function GenInfo() {
           Email Address:{" "}
           <input
             type="email"
-            value={value.email}
-            onChange={(e) => setValue(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
       </div>
@@ -45,13 +53,11 @@ function GenInfo() {
           Phone Number:{" "}
           <input
             type="number"
-            value={value.phone}
-            onChange={(e) => setValue(e.target.value)}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </label>
       </div>
     </>
   );
 }
-
-export default GenInfo;
